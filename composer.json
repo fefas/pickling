@@ -1,0 +1,23 @@
+{
+    "name": "pickling/pickling",
+    "description": "Build HTML pages based from gherkin files",
+
+    "type": "library",
+    "license": "MIT",
+
+    "authors": [
+        {
+            "name": "Felipe Martins",
+            "email": "me@fefas.net"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "Pickling\\": "src/"
+        }
+    },
+
+    "require": {
+    }
+}
