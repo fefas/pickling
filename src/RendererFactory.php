@@ -5,7 +5,7 @@ namespace Pickling;
 use Twig_Loader_Array as TwigLoader;
 use Twig_Environment as Twig;
 
-class TwigFactory
+class RendererFactory
 {
     private const TEMPLATE_HOMEPAGE = <<<TEMPALTE
 <html>
@@ -20,12 +20,19 @@ class TwigFactory
 </html>
 TEMPALTE;
 
-    public static function createInMemory(): Twig
+    public static function createInMemory(): Renderer
     {
-        $loader = new TwigLoader([
+        $twigLoader = new TwigLoader([
             'homepage' => self::TEMPLATE_HOMEPAGE,
         ]);
 
-        return new Twig($loader);
+        return self::create($twigLoader);
+    }
+
+    private static function create(TwigLoader $twigLoader): Renderer
+    {
+        $twig = new Twig($twigLoader);
+
+        return new Renderer($twig);
     }
 }

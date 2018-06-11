@@ -13,7 +13,7 @@ class Documentation
     public function __construct(string $featuresDir)
     {
         $this->featureRepository = new FeatureRepository($featuresDir);
-        $this->renderer = new Renderer(TwigFactory::createInMemory());
+        $this->renderer = RendererFactory::createInMemory();
     }
 
     public function homepage(): string
