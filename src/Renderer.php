@@ -23,7 +23,7 @@ class Renderer
     <h1>Features:</h1>
     <ul>
     {% for feature in features %}
-      <li>{{ feature }}</li>
+      <li>{{ feature.title() }}</li>
     {% endfor %}
     </ul>
   </body>
@@ -51,10 +51,7 @@ BLA;
                 continue;
             }
 
-            $feature = substr($resource, 0, -8);
-            $feature = str_replace('-', ' ', $feature);
-
-            $features[] = ucfirst($feature);
+            $features[] = new Feature($resource);
         }
 
         return $features;
