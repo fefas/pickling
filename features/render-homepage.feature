@@ -15,7 +15,7 @@ Feature: Render homepage with a list of all features
         <body>
           <h1>Features:</h1>
           <ul>
-            <li>Some feature</li>
+            <li><a href="/some-feature">Some feature</a></li>
           </ul>
         </body>
       </html>
@@ -37,8 +37,8 @@ Feature: Render homepage with a list of all features
         <body>
           <h1>Features:</h1>
           <ul>
-            <li>Some feature 1</li>
-            <li>Some feature 2</li>
+            <li><a href="/some-feature-1">Some feature 1</a></li>
+            <li><a href="/some-feature-2">Some feature 2</a></li>
           </ul>
         </body>
       </html>

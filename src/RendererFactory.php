@@ -13,7 +13,7 @@ class RendererFactory
     <h1>Features:</h1>
     <ul>
     {% for feature in features %}
-      <li>{{ feature.title() }}</li>
+      <li><a href="{{ feature.path() }}">{{ feature.title() }}</a></li>
     {% endfor %}
     </ul>
   </body>
