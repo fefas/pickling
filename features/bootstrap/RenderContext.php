@@ -31,12 +31,8 @@ class RenderContext implements Context
     /**
      * @Then I get the following rendered content:
      */
-    public function iGetTheFollowingRenderedContent(string $expected): void
+    public function iGetTheFollowingRenderedContent(string $expectedContent): void
     {
-        if ($expected === $this->renderedContent) {
-            return;
-        }
-
-        throw new Exception("The content '{$this->renderedContent}' is not equal to '$expected'");
+        assertXmlStringEqualsXmlString($expectedContent, $this->renderedContent);
     }
 }
