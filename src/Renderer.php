@@ -2,58 +2,22 @@
 
 namespace Pickling;
 
-use Twig_Loader_Array;
-use Twig_Environment;
+use Twig_Environment as Twig;
 
 class Renderer
 {
-    /** @var string */
-    private $featuresDir;
+    /** @var Twig */
+    private $twig;
 
-    public function __construct(string $featuresDir)
+    public function __construct(Twig $twig)
     {
-        $this->featuresDir = $featuresDir;
+        $this->twig = $twig;
     }
 
-    public function homepage(): string
+    public function homepage(array $features): string
     {
-        $template = <<<BLA
-<html>
-  <body>
-    <h1>Features:</h1>
-    <ul>
-    {% for feature in features %}
-      <li>{{ feature.title() }}</li>
-    {% endfor %}
-    </ul>
-  </body>
-</html>
-BLA;
-
-        $loader = new Twig_Loader_Array([
-            'homepage' => $template,
+        return $this->twig->render('homepage', [
+            'features' => $features,
         ]);
-
-        $twig = new Twig_Environment($loader);
-
-        return $twig->render('homepage', [
-            'features' => $this->findFeatures()
-        ]);
-    }
-
-    private function findFeatures(): array
-    {
-        $resources = scandir($this->featuresDir);
-
-        $features = [];
-        foreach ($resources as $resource) {
-            if (substr($resource, -8) !== '.feature') {
-                continue;
-            }
-
-            $features[] = new Feature($resource);
-        }
-
-        return $features;
     }
 }

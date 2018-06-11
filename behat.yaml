@@ -4,5 +4,5 @@ default:
     suites:
         default:
             contexts:
+                - DocumentationContext
                 - FeatureFilesContext
-                - RenderContext

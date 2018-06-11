@@ -8,8 +8,8 @@ Feature: Render homepage with a list of all features
       """
       Feature: Some Feature
       """
-    When I render homepage
-    Then I get the following rendered content:
+    When I want see the homepage
+    Then I get the following content:
       """
       <html>
         <body>
@@ -30,8 +30,8 @@ Feature: Render homepage with a list of all features
       """
       Feature: Some Feature 2
       """
-    When I render homepage
-    Then I get the following rendered content:
+    When I want see the homepage
+    Then I get the following content:
       """
       <html>
         <body>

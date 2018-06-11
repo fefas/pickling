@@ -2,9 +2,9 @@
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
-use Pickling\Renderer;
+use Pickling\Documentation;
 
-class RenderContext implements Context
+class DocumentationContext implements Context
 {
     /** @var Renderer */
     private $renderer;
@@ -15,21 +15,21 @@ class RenderContext implements Context
     /**
      * @BeforeScenario
      */
-    public function createRenderer(): void
+    public function setUpDocumentation(): void
     {
-        $this->renderer = new Renderer(FEATURES_TMP_DIR);
+        $this->renderer = new Documentation(FEATURES_TMP_DIR);
     }
 
     /**
-     * @When I render homepage
+     * @When I want see the homepage
      */
-    public function iRenderHomepage(): void
+    public function iWantSeeTheHomepage(): void
     {
         $this->renderedContent = $this->renderer->homepage();
     }
 
     /**
-     * @Then I get the following rendered content:
+     * @Then I get the following content:
      */
     public function iGetTheFollowingRenderedContent(string $expectedContent): void
     {
