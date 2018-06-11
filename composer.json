@@ -18,6 +18,12 @@
         }
     },
 
+    "autoload-dev": {
+        "files": [
+            "features/bootstrap/bootstrap.php"
+        ]
+    },
+
     "require": {
         "behat/behat": "^3.4"
     }

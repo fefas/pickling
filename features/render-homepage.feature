@@ -10,14 +10,14 @@ Feature: Render homepage with a list of all features
       Feature: Some Feature
       """
     When I render homepage
-    Then I will get the following result:
+    Then I get the following rendered content:
       """
       <!DOCTYPE>
       <html>
         <body>
           <h1>Features:</h1>
           <ul>
-            <li>ome feature</li>
+            <li>Some feature</li>
           </ul>
         </body>
       </html>
