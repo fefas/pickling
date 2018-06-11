@@ -6,6 +6,15 @@ use Behat\Behat\Context\Context;
 class FeatureFilesContext implements Context
 {
     /**
+     * @BeforeScenario
+     */
+    public function cleanTmpDir(): void
+    {
+        $toDelete = FEATURES_TMP_DIR.'/*';
+        exec("rm -r $toDelete");
+    }
+
+    /**
      * @Given the feature file :file with the following content:
      */
     public function theFeatureFileWithTheFollowingContent(string $file, string $content): void
