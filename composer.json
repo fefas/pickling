@@ -25,6 +25,7 @@
     },
 
     "require": {
-        "behat/behat": "^3.4"
+        "behat/behat": "^3.4",
+        "twig/twig": "^2.4"
     }
 }
