@@ -14,7 +14,7 @@ class Feature
 
     public function path(): string
     {
-        $path = '/'.substr($this->fileName, 0, -8);
+        $path = substr($this->fileName, 0, -8);
 
         return $path;
     }
@@ -22,6 +22,7 @@ class Feature
     public function title(): string
     {
         $title = substr($this->fileName, 0, -8);
+        $title = ltrim($title, '/');
         $title = str_replace('-', ' ', $title);
 
         return ucfirst($title);
