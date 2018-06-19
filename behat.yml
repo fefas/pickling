@@ -1,0 +1,8 @@
+default:
+    suites:
+        default:
+            paths:
+                - '%paths.base%/tests/features/'
+            contexts:
+                - DocumentationContext
+                - FeatureFilesContext

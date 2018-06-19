@@ -5,6 +5,12 @@
     "type": "library",
     "license": "MIT",
 
+    "keywords": [
+        "behat",
+        "html",
+        "docs"
+    ],
+
     "authors": [
         {
             "name": "Felipe Martins",
@@ -12,12 +18,37 @@
         }
     ],
 
+    "scripts": {
+        "test:unit": "phpunit -c phpunit.xml --testdox --colors=always",
+        "test:features": "behat -c behat.yml --colors",
+        "tests": [
+            "@test:unit",
+            "@test:features"
+        ]
+    },
+
     "autoload": {
         "psr-4": {
             "Pickling\\": "src/"
         }
     },
 
+    "autoload-dev": {
+        "classmap": [
+            "tests/features/bootstrap/"
+        ],
+        "files": [
+            "tests/constants.php",
+            "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"
+        ]
+    },
+
     "require": {
+        "twig/twig": "^2.4"
+    },
+
+    "require-dev": {
+        "behat/behat": "^3.4",
+        "phpunit/phpunit": "^7.2"
     }
 }
