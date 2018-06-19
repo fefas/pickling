@@ -8,14 +8,26 @@ use Twig_Environment as Twig;
 class RendererFactory
 {
     private const TEMPLATE_HOMEPAGE = <<<TEMPALTE
+{% import _self as func %}
+
+{% macro listFeatures(features) %}
+    {% import _self as self %}
+
+    <ul>
+    {% for feature in features %}
+        {% if feature is iterable %}
+            {{ self.listFeatures(feature) }}
+        {% else %}
+            <li><a href="?feature={{ feature.id() }}">{{ feature.title() }}</a></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% endmacro %}
+
 <html>
   <body>
     <h1>Features:</h1>
-    <ul>
-    {% for feature in features %}
-      <li><a href="{{ feature.path() }}">{{ feature.title() }}</a></li>
-    {% endfor %}
-    </ul>
+    {{ func.listFeatures(features) }}
   </body>
 </html>
 TEMPALTE;

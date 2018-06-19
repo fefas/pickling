@@ -15,12 +15,27 @@ class FeatureFilesContext implements Context
     }
 
     /**
-     * @Given the feature file :file with the following content:
+     * @Given the feature file :path with the following content:
      */
-    public function theFeatureFileWithTheFollowingContent(string $file, string $content): void
+    public function theFeatureFileWithTheFollowingContent(string $path, string $content): void
     {
-        $file = FEATURES_TMP_DIR.$file;
+        $path = $this->processPath($path);
 
-        file_put_contents($file, $content);
+        file_put_contents($path, $content);
+    }
+
+    private function processPath(string $path): string
+    {
+        $path = FEATURES_TMP_DIR.$path;
+        $parts = explode('/', $path);
+        array_pop($parts);
+
+        $folder = implode('/', $parts);
+
+        if (false === file_exists($folder)) {
+            mkdir($folder);
+        }
+
+        return $path;
     }
 }
