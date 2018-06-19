@@ -12,7 +12,7 @@ class Feature
         $this->fileName = $fileName;
     }
 
-    public function path(): string
+    public function id(): string
     {
         $path = substr($this->fileName, 0, -8);
 
@@ -23,6 +23,7 @@ class Feature
     {
         $title = substr($this->fileName, 0, -8);
         $title = ltrim($title, '/');
+        $title = str_replace('/', ' ', $title);
         $title = str_replace('-', ' ', $title);
 
         return ucfirst($title);
