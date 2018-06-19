@@ -19,8 +19,11 @@
     },
 
     "autoload-dev": {
+        "classmap": [
+            "tests/features/bootstrap/"
+        ],
         "files": [
-            "features/bootstrap/bootstrap.php",
+            "tests/constants.php",
             "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"
         ]
     },

@@ -10,7 +10,7 @@ class FeatureFilesContext implements Context
      */
     public function cleanTmpDir(): void
     {
-        $toDelete = FEATURES_TMP_DIR.'/*';
+        $toDelete = TMP_DIR.'/*';
         exec("rm -r $toDelete");
     }
 
@@ -26,7 +26,7 @@ class FeatureFilesContext implements Context
 
     private function processPath(string $path): string
     {
-        $path = FEATURES_TMP_DIR.$path;
+        $path = TMP_DIR.$path;
         $parts = explode('/', $path);
         array_pop($parts);
 

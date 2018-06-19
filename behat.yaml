@@ -1,8 +1,8 @@
 default:
-    autoload:
-        '': '%paths.base%/features/bootstrap/'
     suites:
         default:
+            paths:
+                - '%paths.base%/tests/features/'
             contexts:
                 - DocumentationContext
                 - FeatureFilesContext

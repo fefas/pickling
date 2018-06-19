@@ -17,7 +17,7 @@ class DocumentationContext implements Context
      */
     public function setUpDocumentation(): void
     {
-        $this->renderer = new Documentation(FEATURES_TMP_DIR);
+        $this->renderer = new Documentation(TMP_DIR);
     }
 
     /**
