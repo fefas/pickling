@@ -12,6 +12,15 @@
         }
     ],
 
+    "scripts": {
+        "test:unit": "phpunit -c phpunit.xml --testdox --colors=always",
+        "test:features": "behat -c behat.yml --colors",
+        "tests": [
+            "@test:unit",
+            "@test:features"
+        ]
+    },
+
     "autoload": {
         "psr-4": {
             "Pickling\\": "src/"
