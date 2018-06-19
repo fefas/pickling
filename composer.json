@@ -26,11 +26,11 @@
     },
 
     "require": {
-        "behat/behat": "^3.4",
         "twig/twig": "^2.4"
     },
 
     "require-dev": {
+        "behat/behat": "^3.4",
         "phpunit/phpunit": "^7.2"
     }
 }
