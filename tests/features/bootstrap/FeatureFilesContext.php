@@ -1,7 +1,6 @@
 <?php
 
 use Behat\Behat\Context\Context;
-//use Behat\Gherkin\Node\PyStringNode;
 
 class FeatureFilesContext implements Context
 {
