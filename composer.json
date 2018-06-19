@@ -5,6 +5,12 @@
     "type": "library",
     "license": "MIT",
 
+    "keywords": [
+        "behat",
+        "html",
+        "docs"
+    ],
+
     "authors": [
         {
             "name": "Felipe Martins",
