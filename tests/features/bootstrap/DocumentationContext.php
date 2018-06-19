@@ -7,17 +7,17 @@ use Pickling\Documentation;
 class DocumentationContext implements Context
 {
     /** @var Renderer */
-    private $renderer;
+    private $documentation;
 
     /** @var string */
-    private $renderedContent;
+    private $pageContent;
 
     /**
      * @BeforeScenario
      */
     public function setUpDocumentation(): void
     {
-        $this->renderer = new Documentation(TMP_DIR);
+        $this->documentation = new Documentation(TMP_DIR);
     }
 
     /**
@@ -25,7 +25,7 @@ class DocumentationContext implements Context
      */
     public function iWantSeeTheHomepage(): void
     {
-        $this->renderedContent = $this->renderer->homepage();
+        $this->pageContent = $this->documentation->homepage();
     }
 
     /**
@@ -33,6 +33,6 @@ class DocumentationContext implements Context
      */
     public function iGetTheFollowingRenderedContent(string $expectedContent): void
     {
-        assertXmlStringEqualsXmlString($expectedContent, $this->renderedContent);
+        assertXmlStringEqualsXmlString($expectedContent, $this->pageContent);
     }
 }
