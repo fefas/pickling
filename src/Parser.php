@@ -8,6 +8,19 @@ use Behat\Gherkin\Parser as BehatParser;
 
 class Parser
 {
+    private const EN_KEYWORDS = [
+        'feature'          => 'Feature',
+        'background'       => 'Background',
+        'scenario'         => 'Scenario',
+        'scenario_outline' => 'Scenario Outline|Scenario Template',
+        'examples'         => 'Examples|Scenarios',
+        'given'            => 'Given',
+        'when'             => 'When',
+        'then'             => 'Then',
+        'and'              => 'And',
+        'but'              => 'But'
+    ];
+
     /** @var BehatParser */
     private $behatParser;
 
@@ -26,18 +39,7 @@ class Parser
     private function createBehatParser(): BehatParser
     {
         $keywords = new BehatKeywords([
-            'en' => [
-                'feature'          => 'Feature',
-                'background'       => 'Background',
-                'scenario'         => 'Scenario',
-                'scenario_outline' => 'Scenario Outline|Scenario Template',
-                'examples'         => 'Examples|Scenarios',
-                'given'            => 'Given',
-                'when'             => 'When',
-                'then'             => 'Then',
-                'and'              => 'And',
-                'but'              => 'But'
-            ],
+            'en' => self::EN_KEYWORDS,
         ]);
 
         return new BehatParser(new BehatLexer($keywords));
