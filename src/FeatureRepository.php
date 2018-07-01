@@ -28,64 +28,36 @@ class FeatureRepository
         return $this->parser->create($id, $content);
     }
 
-    private function filePathFromId(string $id): string
-    {
-        return "{$this->rootDir}$id.feature";
-    }
-
     public function findAll(): array
     {
-        return $this->findAllInDir('/');
-    }
+        $ids = $this->findAllIds();
 
-    private function findAllInDir(string $relativeDir): array
-    {
         $features = [];
-        foreach ($this->scanDir($relativeDir) as $content) {
-
-            $relativePath = $relativeDir.$content;
-
-            if ($this->isDir($relativePath)) {
-                $features[] = $this->findAllInDir($relativePath.'/');
-
-                continue;
-            }
-
-            if ($this->isFeatureFile($relativePath)) {
-                $features[] = new Feature($relativePath);
-
-                continue;
-            }
+        foreach ($ids as $id) {
+            $features[] = $this->findOne($id);
         }
 
         return $features;
     }
 
-    private function scanDir(string $relativeDir): array
+    private function filePathFromId(string $id): string
     {
-        $dir = $this->buildAbsolutePath($relativeDir);
-        $contents = scandir($dir);
-
-        unset($contents[0]); // exclude .
-        unset($contents[1]); // exclude ..
-
-        return $contents;
+        return "{$this->rootDir}$id.feature";
     }
 
-    private function isFeatureFile(string $relativePath): bool
+    private function findAllIds(): array
     {
-        return substr($relativePath, -8) === '.feature';
-    }
+        $files = [];
+        exec("find {$this->rootDir} | grep -e '.feature$'", $files);
 
-    private function isDir(string $relativePath): bool
-    {
-        $path = $this->buildAbsolutePath($relativePath);
+        $ids = [];
+        foreach ($files as $file) {
+            $id = str_replace($this->rootDir, '', $file);
+            $id = str_replace('.feature', '', $id);
 
-        return is_dir($path);
-    }
+            $ids[] = $id;
+        }
 
-    private function buildAbsolutePath(string $relativeDir): string
-    {
-        return $this->rootDir.$relativeDir;
+        return $ids;
     }
 }
