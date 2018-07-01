@@ -5,21 +5,29 @@ namespace Pickling;
 class Documentation
 {
     /** @var FeatureRepository */
-    private $featureRepository;
+    private $featureRepo;
 
     /** @var Renderer */
     private $renderer;
 
-    public function __construct(string $featuresDir)
+    public function __construct(FeatureRepository $featureRepo, Renderer $renderer)
     {
-        $this->featureRepository = new FeatureRepository($featuresDir);
-        $this->renderer = RendererFactory::createInMemory();
+        $this->featureRepo = $featureRepo;
+        $this->renderer = $renderer;
     }
 
     public function homepage(): string
     {
-        $features = $this->featureRepository->findAll();
+        $features = $this->featureRepo->findAll();
 
         return $this->renderer->homepage($features);
+    }
+
+    public function featurePage(string $featureId): string
+    {
+        $features = $this->featureRepo->findAll();
+        $feature = $this->featureRepo->findOne($featureId);
+
+        return $this->renderer->featurePage($features, $feature);
     }
 }

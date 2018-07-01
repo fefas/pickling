@@ -1,4 +1,3 @@
-/vendor/
-
-/tmp/*
-!/tmp/.gitkeep
+vendor/
+tests/features/*
+!tests/features/.gitkeep

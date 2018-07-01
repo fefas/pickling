@@ -2,30 +2,38 @@
 
 namespace Pickling;
 
+use Behat\Gherkin\Node\FeatureNode as BehatFeature;
+
 class Feature
 {
     /** @var string */
-    private $fileName;
+    private $id;
 
-    public function __construct(string $fileName)
+    /** @var string */
+    private $content;
+
+    /** @var BehatFeature */
+    private $parsed;
+
+    public function __construct(string $id, string $content, BehatFeature $parsed)
     {
-        $this->fileName = $fileName;
+        $this->id = $id;
+        $this->content = $content;
+        $this->parsed = $parsed;
     }
 
     public function id(): string
     {
-        $path = substr($this->fileName, 0, -8);
-
-        return $path;
+        return $this->id;
     }
 
-    public function title(): string
+    public function content(): string
     {
-        $title = substr($this->fileName, 0, -8);
-        $title = ltrim($title, '/');
-        $title = str_replace('/', ' ', $title);
-        $title = str_replace('-', ' ', $title);
+        return $this->content;
+    }
 
-        return ucfirst($title);
+    public function parsed(): BehatFeature
+    {
+        return $this->parsed;
     }
 }

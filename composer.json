@@ -19,12 +19,7 @@
     ],
 
     "scripts": {
-        "test:unit": "phpunit -c phpunit.xml --testdox --colors=always",
-        "test:features": "behat -c behat.yml --colors",
-        "tests": [
-            "@test:unit",
-            "@test:features"
-        ]
+        "tests": "phpunit -c phpunit.xml --testdox --colors=always"
     },
 
     "autoload": {
@@ -34,21 +29,20 @@
     },
 
     "autoload-dev": {
-        "classmap": [
-            "tests/features/bootstrap/"
-        ],
+        "psr-4": {
+            "Pickling\\": "tests/"
+        },
         "files": [
-            "tests/constants.php",
-            "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"
+            "tests/constants.php"
         ]
     },
 
     "require": {
-        "twig/twig": "^2.4"
+        "twig/twig": "^2.4",
+        "behat/gherkin": "^4.5"
     },
 
     "require-dev": {
-        "behat/behat": "^3.4",
         "phpunit/phpunit": "^7.2"
     }
 }
