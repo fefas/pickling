@@ -1,3 +1,4 @@
 <?php
 
-const TMP_DIR = __DIR__.'/tmp';
+const FEATURES_DIR = __DIR__.'/features';
+const TEMPLATES_DIR = __DIR__.'/templates';

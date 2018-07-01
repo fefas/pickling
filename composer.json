@@ -19,12 +19,7 @@
     ],
 
     "scripts": {
-        "test:unit": "phpunit -c phpunit.xml --testdox --colors=always",
-        "test:features": "behat -c behat.yml --colors",
-        "tests": [
-            "@test:unit",
-            "@test:features"
-        ]
+        "tests": "phpunit -c phpunit.xml --testdox --colors=always"
     },
 
     "autoload": {
@@ -35,7 +30,7 @@
 
     "autoload-dev": {
         "psr-4": {
-            "Pickling\\": "tests/unit/"
+            "Pickling\\": "tests/"
         },
         "files": [
             "tests/constants.php"

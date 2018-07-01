@@ -17,7 +17,7 @@ class FindOneFeatureTest extends TestCase
     protected function setUp(): void
     {
         $this->parser = $this->createMock(Parser::class);
-        $this->repo = new FeatureRepository(TMP_DIR, $this->parser);
+        $this->repo = new FeatureRepository(FEATURES_DIR, $this->parser);
 
         $this->cleanTmpDir();
     }

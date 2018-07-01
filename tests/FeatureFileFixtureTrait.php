@@ -6,7 +6,7 @@ trait FeatureFileFixtureTrait
 {
     protected function cleanTmpDir(): void
     {
-        $toDelete = $this->rootDir().'/*';
+        $toDelete = $this->featuresDir().'/*';
         exec("rm -r $toDelete 2> /dev/null");
     }
 
@@ -17,14 +17,14 @@ trait FeatureFileFixtureTrait
         file_put_contents($path, $content);
     }
 
-    private function rootDir(): string
+    private function featuresDir(): string
     {
-        return TMP_DIR;
+        return FEATURES_DIR;
     }
 
     private function processPath(string $path): string
     {
-        $path = $this->rootDir().$path;
+        $path = $this->featuresDir().$path;
         $parts = explode('/', $path);
         array_pop($parts);
 

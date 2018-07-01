@@ -23,7 +23,7 @@ class RenderHomePageTest extends TestCase
         $renderer = new Renderer($twig);
 
         $parser = new Parser();
-        $repository = new FeatureRepository(TMP_DIR, $parser);
+        $repository = new FeatureRepository(FEATURES_DIR, $parser);
 
         $this->documentation = new Documentation($repository, $renderer);
     }
