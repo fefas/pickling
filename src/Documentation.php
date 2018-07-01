@@ -25,8 +25,9 @@ class Documentation
 
     public function featurePage(string $featureId): string
     {
+        $features = $this->featureRepo->findAll();
         $feature = $this->featureRepo->findOne($featureId);
 
-        return $this->renderer->featurePage($feature);
+        return $this->renderer->featurePage($features, $feature);
     }
 }
