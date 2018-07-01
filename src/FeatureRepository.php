@@ -48,7 +48,7 @@ class FeatureRepository
     private function findAllIds(): array
     {
         $files = [];
-        exec("find {$this->rootDir} | grep -e '.feature$'", $files);
+        var_dump(exec("find {$this->rootDir} | sort | grep -e '.feature$'", $files));
 
         $ids = [];
         foreach ($files as $file) {
