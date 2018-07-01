@@ -8,24 +8,15 @@ use Twig_Environment as Twig;
 
 class RenderHomePageTest extends TestCase
 {
-    use FeatureFileFixtureTrait;
+    use DocumentationTestTrait;
 
     /** @var Documentation */
     private $documentation;
 
     protected function setUp(): void
     {
-        $this->fixtureFeatureFile('/some1.feature', 'Feature: Some Feature 1');
-        $this->fixtureFeatureFile('/some2.feature', 'Feature: Some Feature 2');
-        $this->fixtureFeatureFile('/group/some3.feature', 'Feature: Some Feature 3');
-
-        $twig = new Twig(new TwigLoader(TEMPLATES_DIR));
-        $renderer = new Renderer($twig);
-
-        $parser = new Parser();
-        $repository = new FeatureRepository(FEATURES_DIR, $parser);
-
-        $this->documentation = new Documentation($repository, $renderer);
+        $this->setUpDefaultFixtures();
+        $this->documentation = $this->createDocumentation();
     }
 
     /**
