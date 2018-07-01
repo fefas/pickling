@@ -1,1 +1,0 @@
-Feature: Some Feature 2
