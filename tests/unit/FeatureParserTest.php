@@ -21,7 +21,7 @@ FEATURE;
         file_put_contents($baseDir.$filePath, $content);
 
         $factory = new FeatureParser($baseDir);
-        $feature = $factory->createFromPath($filePath);
+        $feature = $factory->create('/some', $content);
 
         $expected = [
             'id' => '/some',

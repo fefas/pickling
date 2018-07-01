@@ -20,10 +20,8 @@ class FeatureParser
         $this->behatParser = $this->createBehatParser();
     }
 
-    public function createFromPath(string $path): Feature
+    public function create(string $id, string $content): Feature
     {
-        $id = substr($path, 0, -8);
-        $content = file_get_contents($this->baseDir.$path);
         $behatFeature = $this->behatParser->parse($content);
 
         return new Feature($id, $content, $behatFeature);

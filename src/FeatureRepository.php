@@ -7,9 +7,30 @@ class FeatureRepository
     /** @var string */
     private $rootDir;
 
-    public function __construct(string $rootDir)
+    /** @var FeatureParser */
+    private $parser;
+
+    public function __construct(string $rootDir, FeatureParser $parser)
     {
         $this->rootDir = $rootDir;
+        $this->parser = $parser;
+    }
+
+    public function findOne(string $id): ?Feature
+    {
+        $filePath = $this->filePathFromId($id);
+        if (is_readable($filePath) === false) {
+            return null;
+        }
+
+        $content = file_get_contents($filePath);
+
+        return $this->parser->create($id, $content);
+    }
+
+    private function filePathFromId(string $id): string
+    {
+        return "{$this->rootDir}$id.feature";
     }
 
     public function findAll(): array
