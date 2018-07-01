@@ -6,6 +6,8 @@ use Twig_Environment as Twig;
 
 class Renderer
 {
+    private const HOMEPAGE_TEMPLATE = 'homepage.twig.html';
+
     /** @var Twig */
     private $twig;
 
@@ -16,7 +18,7 @@ class Renderer
 
     public function homepage(array $features): string
     {
-        return $this->twig->render('homepage', [
+        return $this->twig->render(self::HOMEPAGE_TEMPLATE, [
             'features' => $features,
         ]);
     }

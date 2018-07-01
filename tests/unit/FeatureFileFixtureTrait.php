@@ -14,7 +14,7 @@ trait FeatureFileFixtureTrait
     {
         $path = $this->processPath($path);
 
-        file_put_contents($path, 'content');
+        file_put_contents($path, $content);
     }
 
     private function rootDir(): string
