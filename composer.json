@@ -37,6 +37,9 @@
         "classmap": [
             "tests/features/bootstrap/"
         ],
+        "psr-4": {
+            "Pickling\\": "tests/unit/"
+        },
         "files": [
             "tests/constants.php",
             "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"

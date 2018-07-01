@@ -6,6 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class FindOneFeatureTest extends TestCase
 {
+    use FeatureFileFixtureTrait;
+
     /** @var FeatureRepository */
     private $repo;
 
@@ -25,7 +27,7 @@ class FindOneFeatureTest extends TestCase
      */
     public function returnFeatureCreatedFromParserIfIdIsFound(): void
     {
-        file_put_contents(TMP_DIR.'/some-feature.feature', 'content');
+        $this->fixtureFeatureFile('/some-feature.feature', 'content');
         $feature = $this->createMock(Feature::class);
         $this->parser
             ->method('create')
@@ -44,11 +46,5 @@ class FindOneFeatureTest extends TestCase
         $result = $this->repo->findOne('/some-feature');
 
         $this->assertNull($result);
-    }
-
-    private function cleanTmpDir(): void
-    {
-        $toDelete = TMP_DIR.'/*';
-        exec("rm -r $toDelete");
     }
 }
