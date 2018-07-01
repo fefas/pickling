@@ -9,12 +9,12 @@ class FindOneFeatureTest extends TestCase
     /** @var FeatureRepository */
     private $repo;
 
-    /** @var FeatureParser */
+    /** @var Parser */
     private $parser;
 
     protected function setUp(): void
     {
-        $this->parser = $this->createMock(FeatureParser::class);
+        $this->parser = $this->createMock(Parser::class);
         $this->repo = new FeatureRepository(TMP_DIR, $this->parser);
 
         $this->cleanTmpDir();

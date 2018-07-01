@@ -6,17 +6,13 @@ use Behat\Gherkin\Keywords\ArrayKeywords as BehatKeywords;
 use Behat\Gherkin\Lexer as BehatLexer;
 use Behat\Gherkin\Parser as BehatParser;
 
-class FeatureParser
+class Parser
 {
-    /** @var string */
-    private $baseDir;
-
     /** @var BehatParser */
     private $behatParser;
 
-    public function __construct(string $baseDir)
+    public function __construct()
     {
-        $this->baseDir = $baseDir;
         $this->behatParser = $this->createBehatParser();
     }
 

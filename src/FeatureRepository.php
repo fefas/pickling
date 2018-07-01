@@ -7,10 +7,10 @@ class FeatureRepository
     /** @var string */
     private $rootDir;
 
-    /** @var FeatureParser */
+    /** @var Parser */
     private $parser;
 
-    public function __construct(string $rootDir, FeatureParser $parser)
+    public function __construct(string $rootDir, Parser $parser)
     {
         $this->rootDir = $rootDir;
         $this->parser = $parser;
