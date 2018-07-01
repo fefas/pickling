@@ -7,7 +7,7 @@ trait FeatureFileFixtureTrait
     protected function cleanTmpDir(): void
     {
         $toDelete = TMP_DIR.'/*';
-        exec("rm -r $toDelete");
+        exec("rm -r $toDelete 2> /dev/null");
     }
 
     protected function fixtureFeatureFile(string $path, string $content): void
